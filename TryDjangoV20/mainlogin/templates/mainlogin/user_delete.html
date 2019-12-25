@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+    <form action="." method="POST"> {% csrf_token %}
+        <h2>
+            Do you want to terminate "{{ user }}"
+        </h2>
+    <p>
+        <input type="submit" value="Yes"/>
+{#        <a href="/users/">Cancel</a>#}
+        <a href="{% url 'loginapp:user_list' %}">
+        Cancel
+        </a>
+    </p>
+    </form>
+{% endblock %}

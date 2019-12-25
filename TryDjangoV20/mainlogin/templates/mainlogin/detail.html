@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content1 %}
+
+    <div class="alert alert-info">
+        <div class="row">
+            <div class="col">
+
+                <h1 class="display-5">Username : {{ user.username }}</h1>
+                <h4 class="display-5">Firstname : {{ user.first_name }}</h4>
+                <h4 class="display-5">Lastname : {{ user.last_name }}</h4>
+                <h4 class="display-5">Email : {{ user.email }}</h4>
+                <h4 class="display-5">is_staff: {{ user.is_staff }}</h4>
+                <h4 class="display-5">is_active: {{ user.is_active }}</h4>
+                <h4 class="display-5">is_superuser: {{ user.is_superuser }}</h4>
+                <h4 class="display-5">Lastlogin: {{ user.last_login }}</h4>
+{#                                <a href="/delete/{{ user.id }}/">#}
+
+                <a href="{% url 'loginapp:delete' user.id %}">
+                    <button>Delete</button>
+                </a>
+                {#                <a href="/update/{{ user.id }}/">#}
+                <a href="{% url 'loginapp:update' user.id %}">
+                    <button>Update</button>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+    {% if user.is_superuser %}
+        <div class="alert alert-info">
+
+            <br>
+{#            <a href="/register/">#}
+            <a href="{% url 'loginapp:register' %}">
+                <button class="btn-default"
+                        style="align-self: center">
+                    Add user
+                </button>
+            </a>
+{#            <a href="/users/">#}
+            <a href="{% url 'loginapp:user_list' %}">
+                <button class="btn-default"
+                        style="align-self: center">
+                    Users
+                </button>
+            </a>
+
+
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}

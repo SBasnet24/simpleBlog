@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+    <div class="alert alert-info">
+        {#        <a href="/login/">#}
+        <a href="{% url 'loginapp:login' %}">
+            <button class="btn-default"
+                    style="align-self: center">
+                Click Here
+            </button>
+        </a>
+    </div>
+{% endblock %}

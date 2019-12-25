@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+    {% if user.is_staff %}
+        <div class="alert alert-success col-3">
+            <h1 class="display-4">{{ title }}</h1>
+
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        {% for user in users %}
+{#                            <a href="/users/{{ user.id }}/">#}
+                            <a href="{% url 'loginapp:users_detail' user.id %}">
+                            <li class="list-group-item">{{ user.username }}</li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

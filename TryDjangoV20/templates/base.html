@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<div class="container">
+    {% include 'navigation.html' %}
+
+
+    {% if messages %}
+        <div class="row">
+            <div class="col-sm-12">
+                {% for message in messages %}
+                    <p{% if message.tags == 'success' %}
+                        class="alert alert-success"
+                        {% else %}
+                        class="alert alert-info"
+                    {% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="alert alert-info">
+        User : {{ request.user }}<br/>
+        SuperUser : {{ request.user.is_superuser }}<br/>
+    </div>
+    {% block content1 %}
+
+        {# Other templates will replace content in this block #}
+    {% endblock %}
+</div>
+
+</body>
+</html>

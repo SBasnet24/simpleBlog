@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+    <div class="alert alert-info">
+    <div class="col-sm-4 col-sm-offset-4">
+    <h1>{{ title }}</h1>
+    <form method="post" action=""
+          enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+        {% if request.GET.next %}
+                <input type="hidden" name="next" class="btn btn-default"
+           value="{{ request.GET.next }}"/>
+        {% endif %}
+    <input type="submit" class="btn btn-default"
+           value="{{ title }}"/>
+    </form>
+    </div>
+    </div>
+{% endblock %}

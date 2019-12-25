@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content1 %}
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron">
+                <div class="container"><h1>{{ object.title }}</h1>
+                    Posted by : {{ object.user }} | {{ object.timestamp }}<p>
+
+                        <br>{{ object.content }}</p>
+                        {% if object.image %}
+                        <img src="{{ object.image.url }}" class="img-responsive"/>
+                {%  endif %}
+                    {% if request.user.is_superuser and object.user == request.user %}
+                        {# this line is the businesslogic #}
+{#                        <a href="/blogs/delete/{{ Blog.slug }}">#}
+                        <a href="{% url 'blogapp:blog_delete' object.slug %}">
+                            <button type="button" class="btn btn-danger">
+                                DELETE
+                            </button>
+                        </a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

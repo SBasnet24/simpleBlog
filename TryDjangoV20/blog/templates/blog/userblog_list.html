@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+    <div class="paginator">
+
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">  <<  </a>
+        {% endif %}
+
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+
+                <strong>{{ num }}</strong>
+            {% else %}
+                {{ num }}
+            {% endif %}
+
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">  >>   </a>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <div class="jumbotron col-6">
+            <h1 class="display-5">{{ title }}</h1>
+
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        {% for blog in page_obj %}
+
+                            <li class="list-group-item">
+                                {#                            <a href="/page_obj/{{ blog.slug }}/">#}
+                                <a href="{% url 'blogapp:blog_detail' blog.slug %}">
+
+                                    <h2>{{ blog.title }} </h2>
+                                </a>
+                                <h5><i>posted by : {{ blog.user }} | on : {{ blog.timestamp }}</i></h5>
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <a href="{% url "blogapp:blog_create" %}">
+                <button type="button" class="btn btn-primary">Add Blog</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}
